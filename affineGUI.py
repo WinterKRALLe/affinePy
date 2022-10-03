@@ -23,6 +23,9 @@ class MyApp(QMainWindow, Ui_MainWindow):
             if (i == " "):
                 s += "XMEZERAX"
                 continue
+            if (i.isdigit()):
+                s += ("$"+i)
+                continue
             alphabet = string.ascii_lowercase
             ot = alphabet.find(i)
             X = (a * ot + b) % 26
@@ -41,9 +44,13 @@ class MyApp(QMainWindow, Ui_MainWindow):
         letter = self.inputDesifrovat.text()
         letter = str.lower(letter)
         letter = letter.replace("xmezerax", " ")
+        letter = letter.replace("$", "")
         for h in letter:
             if h == " ":
                 s += " "
+                continue
+            if h.isdigit():
+                s += h
                 continue
             alphabet = string.ascii_lowercase
             ot = alphabet.find(h)
