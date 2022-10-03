@@ -1,6 +1,5 @@
 import string
 import unicodedata
-from textwrap import wrap
 
 
 def encoding(text):
@@ -10,7 +9,10 @@ def encoding(text):
 
 
 def lowerAndPunctuation(text):
-    text.translate(str.maketrans('', '', string.punctuation))
+    punc = '''!()-[]{};:'"\,<>./?@#ˇ$%^&*_~'''
+    for ele in text:
+        if ele in punc:
+            text = text.replace(ele, "")
     text = str.lower(text)
     return text
 
